@@ -1,0 +1,33 @@
+<mat-drawer-container class="example-container">
+    <mat-drawer class="drawer" mode="side" opened>
+       
+        <div class="card" style="width:400px">
+     <div class="row"></div>  
+     <img class="card-img-top " routerLink="./details" src="./assets/apple.jpg" alt="Card image" style="width:100% "> 
+<button type="button" class="btn btn-info">Buy now</button><br>
+<button type="button" class="btn btn-warning">Add to cart</button>
+</div>
+    </mat-drawer>
+    <mat-drawer-content >
+        <h1 ><STRONG>APPLE</STRONG></h1>
+        <p class="text-success">special price</p>
+        <h2>₹30</h2>
+        <p class="text-danger">free delivery</p>
+        <div class="container " >
+          
+           <h1>SELLER DETAILS:</h1>
+           <P class="text-primary"><strong>ABC FRUITS</strong> </P>
+          
+
+            <form>
+            
+              <div class="form-group">
+                <label for="comment">Comment:</label>
+                <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+              </div><br>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
+  
