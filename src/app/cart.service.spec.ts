@@ -92,22 +92,40 @@ describe('CartService', () => {
     expect(stored[0].id).toBe('apple');
   });
 
-  it('should rehydrate from localStorage on construction', () => {
+  it('should rehydrate from localStorage on construction', (done) => {
     const saved: CartItem[] = [{ id: 'apple', name: 'Apple', price: 30, quantity: 2 }];
     localStorage.setItem('fruitshop_cart', JSON.stringify(saved));
-    const freshService = new CartService();
-    let items: CartItem[] = [];
-    freshService.items$.subscribe(v => items = v);
-    expect(items.length).toBe(1);
-    expect(items[0].quantity).toBe(2);
+    // Create a fresh TestBed with the pre-seeded localStorage
+    TestBed.resetTestingModule();
+    TestBed.configureTestingModule({});
+    const freshService = TestBed.inject(CartService);
+    freshService.items$.subscribe(items => {
+      expect(items.length).toBe(1);
+      expect(items[0].quantity).toBe(2);
+      done();
+    });
   });
 
-  it('should start empty if localStorage contains invalid JSON', () => {
+  it('should start empty if localStorage contains invalid JSON', (done) => {
     localStorage.setItem('fruitshop_cart', 'not-json');
-    const freshService = new CartService();
-    let items: CartItem[] = [];
-    freshService.items$.subscribe(v => items = v);
-    expect(items.length).toBe(0);
+    TestBed.resetTestingModule();
+    TestBed.configureTestingModule({});
+    const freshService = TestBed.inject(CartService);
+    freshService.items$.subscribe(items => {
+      expect(items.length).toBe(0);
+      done();
+    });
+  });
+
+  it('should start empty if localStorage contains valid JSON but not an array', (done) => {
+    localStorage.setItem('fruitshop_cart', '{"id":"apple"}');
+    TestBed.resetTestingModule();
+    TestBed.configureTestingModule({});
+    const freshService = TestBed.inject(CartService);
+    freshService.items$.subscribe(items => {
+      expect(items.length).toBe(0);
+      done();
+    });
   });
 
   it('updateQuantity -1 should decrement quantity without removing if qty > 1', (done) => {
