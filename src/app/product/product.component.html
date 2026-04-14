@@ -17,7 +17,7 @@
       </select>
       <a routerLink="/cart" class="cart-btn">
         <span class="cart-icon">🛒</span>
-        <span class="cart-badge">{{ totalCount$ | async }}</span>
+        <span class="cart-badge">{{ (totalCount$ | async) ?? 0 }}</span>
       </a>
     </div>
   </div>
@@ -41,7 +41,7 @@
           <span class="delivery-tag">FREE DELIVERY</span>
         </div>
         <div class="card-actions">
-          <button (click)="addToCart('apple', 'Apple', 30)" class="btn-neon-outline">Add to Cart</button>
+          <button type="button" (click)="addToCart('apple', 'Apple', 30)" class="btn-neon-outline">Add to Cart</button>
           <a routerLink="/details" class="btn-neon-ghost">Details</a>
         </div>
       </div>
@@ -59,7 +59,7 @@
           <span class="delivery-tag">FREE DELIVERY</span>
         </div>
         <div class="card-actions">
-          <button (click)="addToCart('orange', 'Orange', 60)" class="btn-neon-outline">Add to Cart</button>
+          <button type="button" (click)="addToCart('orange', 'Orange', 60)" class="btn-neon-outline">Add to Cart</button>
           <a routerLink="/details" class="btn-neon-ghost">Details</a>
         </div>
       </div>
@@ -77,7 +77,7 @@
           <span class="delivery-tag">FREE DELIVERY</span>
         </div>
         <div class="card-actions">
-          <button (click)="addToCart('pineapple', 'Pineapple', 70)" class="btn-neon-outline">Add to Cart</button>
+          <button type="button" (click)="addToCart('pineapple', 'Pineapple', 70)" class="btn-neon-outline">Add to Cart</button>
           <a routerLink="/details" class="btn-neon-ghost">Details</a>
         </div>
       </div>
@@ -109,7 +109,7 @@
       </select>
       <a routerLink="/cart" class="cart-pill">
         <span>🛒</span>
-        <span class="cart-count">{{ totalCount$ | async }}</span>
+        <span class="cart-count">{{ (totalCount$ | async) ?? 0 }}</span>
         <span>Cart</span>
       </a>
     </div>
@@ -149,7 +149,7 @@
           <span class="tropic-original">₹33</span>
         </div>
         <div class="delivery-badge">🚚 Free Delivery</div>
-        <button (click)="addToCart('apple', 'Apple', 30)" class="tropic-btn">Add to Cart 🛒</button>
+        <button type="button" (click)="addToCart('apple', 'Apple', 30)" class="tropic-btn">Add to Cart 🛒</button>
       </div>
     </div>
     <div class="tropic-card orange-card">
@@ -167,7 +167,7 @@
           <span class="tropic-original">₹86</span>
         </div>
         <div class="delivery-badge">🚚 Free Delivery</div>
-        <button (click)="addToCart('orange', 'Orange', 60)" class="tropic-btn orange-btn">Add to Cart 🛒</button>
+        <button type="button" (click)="addToCart('orange', 'Orange', 60)" class="tropic-btn orange-btn">Add to Cart 🛒</button>
       </div>
     </div>
     <div class="tropic-card pine-card">
@@ -185,7 +185,7 @@
           <span class="tropic-original">₹108</span>
         </div>
         <div class="delivery-badge">🚚 Free Delivery</div>
-        <button (click)="addToCart('pineapple', 'Pineapple', 70)" class="tropic-btn pine-btn">Add to Cart 🛒</button>
+        <button type="button" (click)="addToCart('pineapple', 'Pineapple', 70)" class="tropic-btn pine-btn">Add to Cart 🛒</button>
       </div>
     </div>
   </div>
@@ -218,7 +218,7 @@
       <a routerLink="/cart" class="premium-cart-btn">
         <span class="cart-icon-prem">🛍</span>
         <span class="cart-label">Cart</span>
-        <span class="premium-badge">{{ totalCount$ | async }}</span>
+        <span class="premium-badge">{{ (totalCount$ | async) ?? 0 }}</span>
       </a>
     </div>
   </div>
@@ -256,7 +256,7 @@
         </div>
         <div class="premium-delivery">Free Express Delivery</div>
         <div class="premium-actions">
-          <button (click)="addToCart('apple', 'Apple', 30)" class="btn-premium-solid">Add to Cart</button>
+          <button type="button" (click)="addToCart('apple', 'Apple', 30)" class="btn-premium-solid">Add to Cart</button>
           <a routerLink="/details" class="btn-premium-outline">Details</a>
         </div>
       </div>
@@ -276,7 +276,7 @@
         </div>
         <div class="premium-delivery">Free Express Delivery</div>
         <div class="premium-actions">
-          <button (click)="addToCart('orange', 'Orange', 60)" class="btn-premium-solid">Add to Cart</button>
+          <button type="button" (click)="addToCart('orange', 'Orange', 60)" class="btn-premium-solid">Add to Cart</button>
           <a routerLink="/details" class="btn-premium-outline">Details</a>
         </div>
       </div>
@@ -296,7 +296,7 @@
         </div>
         <div class="premium-delivery">Free Express Delivery</div>
         <div class="premium-actions">
-          <button (click)="addToCart('pineapple', 'Pineapple', 70)" class="btn-premium-solid">Add to Cart</button>
+          <button type="button" (click)="addToCart('pineapple', 'Pineapple', 70)" class="btn-premium-solid">Add to Cart</button>
           <a routerLink="/details" class="btn-premium-outline">Details</a>
         </div>
       </div>
