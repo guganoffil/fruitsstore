@@ -38,4 +38,13 @@ describe('ProductComponent', () => {
       done();
     });
   });
+
+  it('totalCount$ should reflect cart state', (done) => {
+    component.addToCart('apple', 'Apple', 30);
+    component.totalCount$.subscribe(count => {
+      if (count === 0) return;
+      expect(count).toBe(1);
+      done();
+    });
+  });
 });

@@ -8,7 +8,9 @@ import { CartService } from '../cart.service';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent {
-  constructor(public themeService: ThemeService, public cartService: CartService) {}
+  totalCount$ = this.cartService.totalCount$;
+
+  constructor(private themeService: ThemeService, private cartService: CartService) {}
 
   get theme(): Theme { return this.themeService.theme; }
 
