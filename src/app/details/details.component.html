@@ -1,33 +1,204 @@
-<mat-drawer-container class="example-container">
-    <mat-drawer class="drawer" mode="side" opened>
-       
-        <div class="card" style="width:400px">
-     <div class="row"></div>  
-     <img class="card-img-top " routerLink="./details" src="./assets/apple.jpg" alt="Card image" style="width:100% "> 
-<button type="button" class="btn btn-info">Buy now</button><br>
-<button type="button" class="btn btn-warning">Add to cart</button>
-</div>
-    </mat-drawer>
-    <mat-drawer-content >
-        <h1 ><STRONG>APPLE</STRONG></h1>
-        <p class="text-success">special price</p>
-        <h2>₹30</h2>
-        <p class="text-danger">free delivery</p>
-        <div class="container " >
-          
-           <h1>SELLER DETAILS:</h1>
-           <P class="text-primary"><strong>ABC FRUITS</strong> </P>
-          
+<!-- ===== VERSION 1: NEON DARK DETAILS ===== -->
+<ng-container *ngIf="theme === 'v1'">
+  <div class="neon-navbar">
+    <div class="neon-brand">
+      <span class="neon-icon">⚡</span>
+      <span class="neon-logo">FruitShop</span>
+    </div>
+    <div class="navbar-right">
+      <select class="theme-switcher theme-switcher-neon" [ngModel]="theme" (ngModelChange)="onThemeChange($event)">
+        <option value="v1">⚡ Neon Dark</option>
+        <option value="v2">🍓 Tropical</option>
+        <option value="v3">🌿 Premium</option>
+      </select>
+      <a routerLink="/product" class="btn-back">← BACK</a>
+    </div>
+  </div>
 
-            <form>
-            
-              <div class="form-group">
-                <label for="comment">Comment:</label>
-                <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
-              </div><br>
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-          </div>
-    </mat-drawer-content>
-  </mat-drawer-container>
-  
+  <div class="details-layout">
+    <div class="details-image-panel">
+      <div class="img-glow-ring">
+        <img src="./assets/apple.jpg" alt="Apple" class="details-img" />
+      </div>
+      <div class="img-actions">
+        <a routerLink="/product" class="btn-buy-now">BUY NOW ⚡</a>
+        <a routerLink="/product" class="btn-add-cart">ADD TO CART</a>
+      </div>
+    </div>
+    <div class="details-info-panel">
+      <div class="product-tag">PREMIUM QUALITY</div>
+      <h1 class="details-product-name">APPLE</h1>
+      <div class="price-row">
+        <span class="details-price">₹30</span>
+        <span class="original-price">₹33</span>
+        <span class="saving-badge">10% OFF</span>
+      </div>
+      <div class="delivery-info">
+        <span class="delivery-icon">🚚</span>
+        <span class="delivery-text">FREE DELIVERY • 2-3 DAYS</span>
+      </div>
+      <div class="details-divider"></div>
+      <div class="seller-section">
+        <h3 class="section-label">SELLER</h3>
+        <p class="seller-name">ABC FRUITS</p>
+        <div class="seller-rating">⭐ ⭐ ⭐ ⭐ ⭐ <span class="rating-count">(128 reviews)</span></div>
+      </div>
+      <div class="details-divider"></div>
+      <div class="comment-section">
+        <h3 class="section-label">LEAVE A REVIEW</h3>
+        <form>
+          <textarea class="neon-textarea" rows="4" placeholder="Share your thoughts about this product..."></textarea>
+          <button type="submit" class="btn-submit">SUBMIT REVIEW</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<!-- ===== VERSION 2: TROPICAL BURST DETAILS ===== -->
+<ng-container *ngIf="theme === 'v2'">
+  <div class="tropic-navbar">
+    <div class="tropic-brand">
+      <span class="brand-emoji">🍓</span>
+      <span class="brand-name">FruitShop</span>
+    </div>
+    <div class="tropic-navbar-right">
+      <select class="theme-switcher theme-switcher-tropic" [ngModel]="theme" (ngModelChange)="onThemeChange($event)">
+        <option value="v1">⚡ Neon Dark</option>
+        <option value="v2">🍓 Tropical</option>
+        <option value="v3">🌿 Premium</option>
+      </select>
+      <a routerLink="/product" class="back-link">← Back to Fruits</a>
+    </div>
+  </div>
+
+  <div class="tropic-details-layout">
+    <div class="details-sidebar">
+      <div class="sidebar-bg-art"></div>
+      <div class="sidebar-content">
+        <div class="big-fruit-emoji">🍎</div>
+        <img src="./assets/apple.jpg" alt="Apple" class="details-img-tropic" />
+        <div class="star-rating">⭐ ⭐ ⭐ ⭐ ⭐</div>
+        <div class="review-count">128 happy customers!</div>
+      </div>
+    </div>
+    <div class="details-main">
+      <div class="product-category-badge">🌿 Fresh Fruits</div>
+      <h1 class="details-product-name-tropic">Apple</h1>
+      <p class="product-tagline">Crisp, juicy, and absolutely delicious!</p>
+      <div class="price-section">
+        <span class="big-price">₹30</span>
+        <span class="crossed-price">₹33</span>
+        <span class="saving-pill">Save 10%! 🎉</span>
+      </div>
+      <div class="feature-pills">
+        <span class="feature-pill">🚚 Free Delivery</span>
+        <span class="feature-pill">✅ Fresh Picked</span>
+        <span class="feature-pill">🌿 Organic</span>
+        <span class="feature-pill">💊 Vitamin Rich</span>
+      </div>
+      <div class="seller-tropic">
+        <div class="seller-avatar">🏪</div>
+        <div>
+          <div class="seller-name-tropic">ABC Fruits</div>
+          <div class="seller-tag">Verified Premium Seller</div>
+        </div>
+      </div>
+      <div class="cta-group">
+        <a routerLink="/product" class="btn-buy-tropic">Buy Now 🛒</a>
+        <a routerLink="/product" class="btn-cart-tropic">Add to Cart</a>
+      </div>
+      <div class="review-form-tropic">
+        <h3 class="form-heading">Leave a Review 💬</h3>
+        <form>
+          <textarea class="tropic-textarea" rows="4" placeholder="Tell us about your experience! 😊"></textarea>
+          <button type="submit" class="btn-submit-tropic">Submit Review ✨</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<!-- ===== VERSION 3: PREMIUM ORGANIC DETAILS ===== -->
+<ng-container *ngIf="theme === 'v3'">
+  <div class="premium-navbar">
+    <div class="premium-brand">
+      <div class="brand-monogram">FS</div>
+      <div class="brand-text">
+        <span class="brand-name">FruitShop</span>
+        <span class="brand-sub">Organic Boutique</span>
+      </div>
+    </div>
+    <div class="premium-navbar-right">
+      <select class="theme-switcher theme-switcher-premium" [ngModel]="theme" (ngModelChange)="onThemeChange($event)">
+        <option value="v1">⚡ Neon Dark</option>
+        <option value="v2">🍓 Tropical</option>
+        <option value="v3">🌿 Premium</option>
+      </select>
+      <a routerLink="/product" class="nav-back">← Collection</a>
+    </div>
+  </div>
+
+  <div class="premium-details-layout">
+    <div class="details-left-premium">
+      <div class="img-frame-premium">
+        <div class="frame-corner tl"></div>
+        <div class="frame-corner tr"></div>
+        <div class="frame-corner bl"></div>
+        <div class="frame-corner br"></div>
+        <img src="./assets/apple.jpg" alt="Apple" class="details-img-premium" />
+      </div>
+      <div class="product-badge-ribbon">PREMIUM SELECTION</div>
+      <div class="action-column">
+        <a routerLink="/product" class="btn-buy-premium">Buy Now</a>
+        <a routerLink="/product" class="btn-addcart-premium">Add to Cart</a>
+      </div>
+      <div class="certification-block">
+        <span>🌿 Certified Organic</span>
+        <span>·</span>
+        <span>🚚 Free Delivery</span>
+      </div>
+    </div>
+    <div class="details-right-premium">
+      <div class="product-breadcrumb">Fruits / Fresh Produce / Apples</div>
+      <h1 class="details-name-premium">Apple</h1>
+      <div class="editorial-line">
+        <em>"The finest variety, sourced from certified organic orchards"</em>
+      </div>
+      <div class="price-premium-block">
+        <span class="details-price-premium">₹30</span>
+        <span class="details-original-premium">₹33</span>
+        <span class="details-saving-premium">Save 10%</span>
+      </div>
+      <div class="premium-divider-gold"></div>
+      <div class="product-attributes">
+        <div class="attribute-row">
+          <span class="attr-label">Origin</span>
+          <span class="attr-value">Himachal Pradesh, India</span>
+        </div>
+        <div class="attribute-row">
+          <span class="attr-label">Grade</span>
+          <span class="attr-value">Premium A+</span>
+        </div>
+        <div class="attribute-row">
+          <span class="attr-label">Certification</span>
+          <span class="attr-value">NPOP Certified Organic</span>
+        </div>
+      </div>
+      <div class="premium-divider-gold"></div>
+      <div class="seller-premium-block">
+        <h3 class="block-label">Seller</h3>
+        <div class="seller-name-premium">ABC Fruits</div>
+        <div class="seller-stars-premium">★ ★ ★ ★ ★ <span class="review-ct">(128 reviews)</span></div>
+      </div>
+      <div class="premium-divider-gold"></div>
+      <div class="review-premium-block">
+        <h3 class="block-label">Share Your Experience</h3>
+        <form>
+          <textarea class="premium-textarea" rows="4" placeholder="Your review..."></textarea>
+          <button type="submit" class="btn-review-premium">Submit Review</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</ng-container>
