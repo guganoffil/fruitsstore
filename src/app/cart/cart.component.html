@@ -43,13 +43,15 @@
       </div>
     </ng-container>
 
-    <div class="cart-summary-panel">
-      <div class="summary-row"><span>Subtotal</span><span class="neon-text">₹{{ (totalPrice$ | async) ?? 0 }}</span></div>
-      <div class="summary-row"><span>Delivery</span><span class="free-tag">FREE</span></div>
-      <div class="summary-divider"></div>
-      <div class="summary-row total-row"><span>TOTAL</span><span class="total-price">₹{{ (totalPrice$ | async) ?? 0 }}</span></div>
-      <button type="button" class="btn-checkout">PROCEED TO CHECKOUT</button>
-    </div>
+    <ng-container *ngIf="{ total: (totalPrice$ | async) ?? 0 } as state">
+      <div class="cart-summary-panel">
+        <div class="summary-row"><span>Subtotal</span><span class="neon-text">₹{{ state.total }}</span></div>
+        <div class="summary-row"><span>Delivery</span><span class="free-tag">FREE</span></div>
+        <div class="summary-divider"></div>
+        <div class="summary-row total-row"><span>TOTAL</span><span class="total-price">₹{{ state.total }}</span></div>
+        <button type="button" class="btn-checkout">PROCEED TO CHECKOUT</button>
+      </div>
+    </ng-container>
   </div>
 </ng-container>
 
@@ -102,19 +104,21 @@
     </ng-container>
 
     <div class="tropic-summary">
-      <div class="summary-card">
-        <h3 class="summary-heading">Order Summary 📋</h3>
-        <div class="summary-line"><span>Items</span><span>₹{{ (totalPrice$ | async) ?? 0 }}</span></div>
-        <div class="summary-line"><span>Delivery</span><span class="free-label">🚚 FREE</span></div>
-        <div class="summary-divider"></div>
-        <div class="summary-line total-line"><span>Total</span><span class="total-amount">₹{{ (totalPrice$ | async) ?? 0 }}</span></div>
-        <button type="button" class="checkout-btn-tropic">Checkout Now 🚀</button>
-        <div class="trust-badges">
-          <span>🔒 Secure</span>
-          <span>✅ Verified</span>
-          <span>🌿 Fresh</span>
+      <ng-container *ngIf="{ total: (totalPrice$ | async) ?? 0 } as state">
+        <div class="summary-card">
+          <h3 class="summary-heading">Order Summary 📋</h3>
+          <div class="summary-line"><span>Items</span><span>₹{{ state.total }}</span></div>
+          <div class="summary-line"><span>Delivery</span><span class="free-label">🚚 FREE</span></div>
+          <div class="summary-divider"></div>
+          <div class="summary-line total-line"><span>Total</span><span class="total-amount">₹{{ state.total }}</span></div>
+          <button type="button" class="checkout-btn-tropic">Checkout Now 🚀</button>
+          <div class="trust-badges">
+            <span>🔒 Secure</span>
+            <span>✅ Verified</span>
+            <span>🌿 Fresh</span>
+          </div>
         </div>
-      </div>
+      </ng-container>
     </div>
   </div>
 </ng-container>
@@ -171,30 +175,32 @@
         </div>
       </ng-container>
 
-      <div class="premium-summary-panel">
-        <div class="summary-header-premium">
-          <h3 class="summary-title-premium">Order Summary</h3>
-          <div class="summary-title-line"></div>
+      <ng-container *ngIf="{ total: (totalPrice$ | async) ?? 0 } as state">
+        <div class="premium-summary-panel">
+          <div class="summary-header-premium">
+            <h3 class="summary-title-premium">Order Summary</h3>
+            <div class="summary-title-line"></div>
+          </div>
+          <div class="summary-items">
+            <div class="summary-row-premium"><span>Subtotal</span><span>₹{{ state.total }}</span></div>
+            <div class="summary-row-premium"><span>Express Delivery</span><span class="comp-label">Complimentary</span></div>
+            <div class="summary-row-premium"><span>Organic Certification</span><span class="comp-label">Included</span></div>
+          </div>
+          <div class="summary-line-premium"></div>
+          <div class="summary-row-premium total-row-premium">
+            <span>Total</span>
+            <span class="total-premium">₹{{ state.total }}</span>
+          </div>
+          <button type="button" class="btn-checkout-premium">Proceed to Checkout</button>
+          <div class="trust-line">
+            <span>🔒 Secure Checkout</span>
+            <span>·</span>
+            <span>🌿 100% Organic</span>
+            <span>·</span>
+            <span>✅ Verified Farm</span>
+          </div>
         </div>
-        <div class="summary-items">
-          <div class="summary-row-premium"><span>Subtotal</span><span>₹{{ (totalPrice$ | async) ?? 0 }}</span></div>
-          <div class="summary-row-premium"><span>Express Delivery</span><span class="comp-label">Complimentary</span></div>
-          <div class="summary-row-premium"><span>Organic Certification</span><span class="comp-label">Included</span></div>
-        </div>
-        <div class="summary-line-premium"></div>
-        <div class="summary-row-premium total-row-premium">
-          <span>Total</span>
-          <span class="total-premium">₹{{ (totalPrice$ | async) ?? 0 }}</span>
-        </div>
-        <button type="button" class="btn-checkout-premium">Proceed to Checkout</button>
-        <div class="trust-line">
-          <span>🔒 Secure Checkout</span>
-          <span>·</span>
-          <span>🌿 100% Organic</span>
-          <span>·</span>
-          <span>✅ Verified Farm</span>
-        </div>
-      </div>
+      </ng-container>
     </div>
   </div>
 
