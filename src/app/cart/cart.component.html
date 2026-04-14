@@ -1,1 +1,205 @@
-<p>cart works!</p>
+<!-- ===== VERSION 1: NEON DARK CART ===== -->
+<ng-container *ngIf="theme === 'v1'">
+  <div class="neon-navbar">
+    <div class="neon-brand">
+      <span class="neon-icon">⚡</span>
+      <span class="neon-logo">FruitShop</span>
+    </div>
+    <div class="navbar-right">
+      <select class="theme-switcher theme-switcher-neon" [ngModel]="theme" (ngModelChange)="onThemeChange($event)">
+        <option value="v1">⚡ Neon Dark</option>
+        <option value="v2">🍓 Tropical</option>
+        <option value="v3">🌿 Premium</option>
+      </select>
+      <a routerLink="/product" class="btn-back">← BACK TO STORE</a>
+    </div>
+  </div>
+
+  <div class="cart-page">
+    <div class="cart-header">
+      <h1 class="cart-title">YOUR <span class="neon-text">CART</span></h1>
+      <div class="cart-divider"></div>
+    </div>
+
+    <ng-container *ngIf="items$ | async as items">
+      <div *ngIf="items.length === 0" class="cart-empty-state">
+        <div class="empty-icon">🛒</div>
+        <h2 class="empty-title">CART IS EMPTY</h2>
+        <p class="empty-sub">Add some fresh fruits to get started</p>
+        <a routerLink="/product" class="btn-neon-outline">CONTINUE SHOPPING</a>
+      </div>
+
+      <div *ngIf="items.length > 0" class="cart-items-list">
+        <div class="cart-item" *ngFor="let item of items">
+          <span class="item-name">{{ item.name }}</span>
+          <div class="qty-controls">
+            <button type="button" class="qty-btn" (click)="updateQuantity(item.id, -1)">−</button>
+            <span class="qty-value">{{ item.quantity }}</span>
+            <button type="button" class="qty-btn" (click)="updateQuantity(item.id, 1)">+</button>
+          </div>
+          <span class="item-subtotal">₹{{ item.price * item.quantity }}</span>
+          <button type="button" class="remove-btn" (click)="removeFromCart(item.id)">Remove</button>
+        </div>
+      </div>
+    </ng-container>
+
+    <div class="cart-summary-panel">
+      <div class="summary-row"><span>Subtotal</span><span class="neon-text">₹{{ (totalPrice$ | async) ?? 0 }}</span></div>
+      <div class="summary-row"><span>Delivery</span><span class="free-tag">FREE</span></div>
+      <div class="summary-divider"></div>
+      <div class="summary-row total-row"><span>TOTAL</span><span class="total-price">₹{{ (totalPrice$ | async) ?? 0 }}</span></div>
+      <button type="button" class="btn-checkout">PROCEED TO CHECKOUT</button>
+    </div>
+  </div>
+</ng-container>
+
+<!-- ===== VERSION 2: TROPICAL BURST CART ===== -->
+<ng-container *ngIf="theme === 'v2'">
+  <div class="tropic-navbar">
+    <div class="tropic-brand">
+      <span class="brand-emoji">🍓</span>
+      <span class="brand-name">FruitShop</span>
+    </div>
+    <div class="tropic-navbar-right">
+      <select class="theme-switcher theme-switcher-tropic" [ngModel]="theme" (ngModelChange)="onThemeChange($event)">
+        <option value="v1">⚡ Neon Dark</option>
+        <option value="v2">🍓 Tropical</option>
+        <option value="v3">🌿 Premium</option>
+      </select>
+      <a routerLink="/product" class="back-link">← Keep Shopping</a>
+    </div>
+  </div>
+
+  <div class="tropic-cart-page">
+    <div class="cart-header-tropic">
+      <h1 class="cart-heading">🛒 Your Cart</h1>
+      <p class="cart-sub">Fresh fruits waiting for you!</p>
+    </div>
+
+    <ng-container *ngIf="items$ | async as items">
+      <div *ngIf="items.length === 0" class="empty-cart-tropic">
+        <div class="empty-illustration">
+          <div class="empty-bowl">🍽️</div>
+          <div class="floating-fruits">🍎 🍊 🍍</div>
+        </div>
+        <h2 class="empty-heading">Your cart is empty!</h2>
+        <p class="empty-text">Add some fresh, delicious fruits to get started 🌿</p>
+        <a routerLink="/product" class="tropic-btn-pill">Browse Fruits 🍎</a>
+      </div>
+
+      <div *ngIf="items.length > 0" class="cart-items-list">
+        <div class="cart-item" *ngFor="let item of items">
+          <span class="item-name">{{ item.name }}</span>
+          <div class="qty-controls">
+            <button type="button" class="qty-btn" (click)="updateQuantity(item.id, -1)">−</button>
+            <span class="qty-value">{{ item.quantity }}</span>
+            <button type="button" class="qty-btn" (click)="updateQuantity(item.id, 1)">+</button>
+          </div>
+          <span class="item-subtotal">₹{{ item.price * item.quantity }}</span>
+          <button type="button" class="remove-btn" (click)="removeFromCart(item.id)">Remove</button>
+        </div>
+      </div>
+    </ng-container>
+
+    <div class="tropic-summary">
+      <div class="summary-card">
+        <h3 class="summary-heading">Order Summary 📋</h3>
+        <div class="summary-line"><span>Items</span><span>₹{{ (totalPrice$ | async) ?? 0 }}</span></div>
+        <div class="summary-line"><span>Delivery</span><span class="free-label">🚚 FREE</span></div>
+        <div class="summary-divider"></div>
+        <div class="summary-line total-line"><span>Total</span><span class="total-amount">₹{{ (totalPrice$ | async) ?? 0 }}</span></div>
+        <button type="button" class="checkout-btn-tropic">Checkout Now 🚀</button>
+        <div class="trust-badges">
+          <span>🔒 Secure</span>
+          <span>✅ Verified</span>
+          <span>🌿 Fresh</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<!-- ===== VERSION 3: PREMIUM ORGANIC CART ===== -->
+<ng-container *ngIf="theme === 'v3'">
+  <div class="premium-navbar">
+    <div class="premium-brand">
+      <div class="brand-monogram">FS</div>
+      <div class="brand-text">
+        <span class="brand-name">FruitShop</span>
+        <span class="brand-sub">Organic Boutique</span>
+      </div>
+    </div>
+    <div class="premium-navbar-right">
+      <select class="theme-switcher theme-switcher-premium" [ngModel]="theme" (ngModelChange)="onThemeChange($event)">
+        <option value="v1">⚡ Neon Dark</option>
+        <option value="v2">🍓 Tropical</option>
+        <option value="v3">🌿 Premium</option>
+      </select>
+      <a routerLink="/product" class="nav-back">Return to Shop</a>
+    </div>
+  </div>
+
+  <div class="premium-cart-page">
+    <div class="cart-page-header">
+      <h1 class="cart-title-premium">Your Cart</h1>
+      <div class="cart-title-line"></div>
+    </div>
+    <div class="cart-body-premium">
+      <ng-container *ngIf="items$ | async as items">
+        <div *ngIf="items.length === 0" class="empty-state-premium">
+          <div class="empty-botanical">
+            <div class="leaf-art">🌿</div>
+            <div class="empty-circle"><span class="empty-icon-premium">🛍</span></div>
+            <div class="leaf-art right">🌿</div>
+          </div>
+          <h2 class="empty-title-premium">Your cart is empty</h2>
+          <p class="empty-desc-premium">Discover our curated selection of premium organic fruits.</p>
+          <a routerLink="/product" class="btn-continue-premium">Continue Shopping</a>
+        </div>
+
+        <div *ngIf="items.length > 0" class="cart-items-list">
+          <div class="cart-item" *ngFor="let item of items">
+            <span class="item-name">{{ item.name }}</span>
+            <div class="qty-controls">
+              <button type="button" class="qty-btn" (click)="updateQuantity(item.id, -1)">−</button>
+              <span class="qty-value">{{ item.quantity }}</span>
+              <button type="button" class="qty-btn" (click)="updateQuantity(item.id, 1)">+</button>
+            </div>
+            <span class="item-subtotal">₹{{ item.price * item.quantity }}</span>
+            <button type="button" class="remove-btn" (click)="removeFromCart(item.id)">Remove</button>
+          </div>
+        </div>
+      </ng-container>
+
+      <div class="premium-summary-panel">
+        <div class="summary-header-premium">
+          <h3 class="summary-title-premium">Order Summary</h3>
+          <div class="summary-title-line"></div>
+        </div>
+        <div class="summary-items">
+          <div class="summary-row-premium"><span>Subtotal</span><span>₹{{ (totalPrice$ | async) ?? 0 }}</span></div>
+          <div class="summary-row-premium"><span>Express Delivery</span><span class="comp-label">Complimentary</span></div>
+          <div class="summary-row-premium"><span>Organic Certification</span><span class="comp-label">Included</span></div>
+        </div>
+        <div class="summary-line-premium"></div>
+        <div class="summary-row-premium total-row-premium">
+          <span>Total</span>
+          <span class="total-premium">₹{{ (totalPrice$ | async) ?? 0 }}</span>
+        </div>
+        <button type="button" class="btn-checkout-premium">Proceed to Checkout</button>
+        <div class="trust-line">
+          <span>🔒 Secure Checkout</span>
+          <span>·</span>
+          <span>🌿 100% Organic</span>
+          <span>·</span>
+          <span>✅ Verified Farm</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="premium-footer">
+    <div class="footer-brand">FruitShop</div>
+    <div class="footer-tagline">Organic Boutique · Est. 2026</div>
+  </footer>
+</ng-container>
