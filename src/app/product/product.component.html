@@ -1,56 +1,321 @@
-
-    <div class="navbar navbar-dark bg-primary shadow-sm">
-        <div class="navbar-brand align-item-center d-flex">
-            <i style="font-size: 40px;" class="fas fa-shipping-fast">&nbsp;
-                
-            </i>
-            <strong style="font-size: 30px;">FruitShop</strong>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="search products">
-            </div>
-            <span class="fas fa-search search-icon"></span>
-
-
-        </div>
-        <button routerLink="./cart" class="btn btn-primary">
-            <i style="font-size: 30px;" class="fas fa-cart-plus"></i>
-            <div style="font-size: 10px;" class="badge bg-danger"></div>
-        </button>
+<!-- ===== VERSION 1: NEON DARK ===== -->
+<ng-container *ngIf="theme === 'v1'">
+  <div class="neon-navbar">
+    <div class="neon-brand">
+      <span class="neon-icon">⚡</span>
+      <span class="neon-logo">FruitShop</span>
     </div>
-  
-    <div class="container m-3 ">
-    </div><div class="row"> 
-        <div class="card" style="width:400px">
-          <img class="card-img-top " routerLink="./details" src="./assets/apple.jpg" alt="Card image" style="width:100%">
-          <div class="card-body">
-            <h4 class="card-title">Apple</h4>
-            <h2 class="card-text"> ₹30 
-                Free delivery</h2>
-                <p>10%off</p>
+    <div class="neon-search-wrap">
+      <input type="text" class="neon-search" placeholder="Search fruits..." />
+      <span class="search-glyph">🔍</span>
+    </div>
+    <div class="navbar-right">
+      <select class="theme-switcher theme-switcher-neon" [ngModel]="theme" (ngModelChange)="onThemeChange($event)">
+        <option value="v1">⚡ Neon Dark</option>
+        <option value="v2">🍓 Tropical</option>
+        <option value="v3">🌿 Premium</option>
+      </select>
+      <a routerLink="/cart" class="cart-btn">
+        <span class="cart-icon">🛒</span>
+        <span class="cart-badge">{{ totalCount$ | async }}</span>
+      </a>
+    </div>
+  </div>
 
-            <a href="cart" class="btn btn-primary">Add to Cart</a>
-          </div>
+  <div class="neon-hero">
+    <h1 class="hero-title">FRESH <span class="neon-text">FRUITS</span></h1>
+    <p class="hero-sub">Premium quality delivered to your door</p>
+  </div>
+
+  <div class="products-grid">
+    <div class="neon-card">
+      <div class="card-glow-border"></div>
+      <div class="discount-badge">10% OFF</div>
+      <div class="card-img-wrap">
+        <img routerLink="/details" src="./assets/apple.jpg" alt="Apple" class="product-img" />
+      </div>
+      <div class="card-content">
+        <h3 class="product-name">Apple</h3>
+        <div class="product-meta">
+          <span class="product-price">₹30</span>
+          <span class="delivery-tag">FREE DELIVERY</span>
         </div>
-        <div class="card" style="width:400px">
-            <img class="card-img-top" src="./assets/orrange.jpg" alt="Card image" style="width:100%">
-            <div class="card-body">
-              <h4 class="card-title">Orrange</h4>
-              <h2 class="card-text"> ₹60 
-                Free delivery</h2>
-                <p>30%off</p>
-              <a href="cart" class="btn btn-primary">Add to Cart</a>
-            </div>
-          </div>
-          <div class="card" style="width:400px">
-            <img class="card-img-top" src="./assets/pineapple.jpg" alt="Card image" style="width:100%">
-            <div class="card-body">
-              <h4 class="card-title">pineapple</h4>
-              <h2 class="card-text"> ₹70 
-                Free delivery</h2>
-                <p>35%off</p>
-              <a href="cart" class="btn btn-primary">Add to Cart</a>
-            </div>
-          </div>
+        <div class="card-actions">
+          <button (click)="addToCart('apple', 'Apple', 30)" class="btn-neon-outline">Add to Cart</button>
+          <a routerLink="/details" class="btn-neon-ghost">Details</a>
         </div>
-    
-    
+      </div>
+    </div>
+    <div class="neon-card">
+      <div class="card-glow-border"></div>
+      <div class="discount-badge cyan">30% OFF</div>
+      <div class="card-img-wrap">
+        <img src="./assets/orrange.jpg" alt="Orange" class="product-img" />
+      </div>
+      <div class="card-content">
+        <h3 class="product-name">Orange</h3>
+        <div class="product-meta">
+          <span class="product-price">₹60</span>
+          <span class="delivery-tag">FREE DELIVERY</span>
+        </div>
+        <div class="card-actions">
+          <button (click)="addToCart('orange', 'Orange', 60)" class="btn-neon-outline">Add to Cart</button>
+          <a routerLink="/details" class="btn-neon-ghost">Details</a>
+        </div>
+      </div>
+    </div>
+    <div class="neon-card">
+      <div class="card-glow-border"></div>
+      <div class="discount-badge purple">35% OFF</div>
+      <div class="card-img-wrap">
+        <img src="./assets/pineapple.jpg" alt="Pineapple" class="product-img" />
+      </div>
+      <div class="card-content">
+        <h3 class="product-name">Pineapple</h3>
+        <div class="product-meta">
+          <span class="product-price">₹70</span>
+          <span class="delivery-tag">FREE DELIVERY</span>
+        </div>
+        <div class="card-actions">
+          <button (click)="addToCart('pineapple', 'Pineapple', 70)" class="btn-neon-outline">Add to Cart</button>
+          <a routerLink="/details" class="btn-neon-ghost">Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="neon-footer">
+    <span>© 2026 FruitShop — <span class="neon-text">Powered by Neon</span></span>
+  </footer>
+</ng-container>
+
+<!-- ===== VERSION 2: TROPICAL BURST ===== -->
+<ng-container *ngIf="theme === 'v2'">
+  <div class="tropic-navbar">
+    <div class="tropic-brand">
+      <span class="brand-emoji">🍓</span>
+      <span class="brand-name">FruitShop</span>
+      <span class="brand-tagline">Fresh Daily</span>
+    </div>
+    <div class="tropic-search-wrap">
+      <span class="search-prefix">🔍</span>
+      <input type="text" class="tropic-search" placeholder="Search delicious fruits..." />
+    </div>
+    <div class="tropic-navbar-right">
+      <select class="theme-switcher theme-switcher-tropic" [ngModel]="theme" (ngModelChange)="onThemeChange($event)">
+        <option value="v1">⚡ Neon Dark</option>
+        <option value="v2">🍓 Tropical</option>
+        <option value="v3">🌿 Premium</option>
+      </select>
+      <a routerLink="/cart" class="cart-pill">
+        <span>🛒</span>
+        <span class="cart-count">{{ totalCount$ | async }}</span>
+        <span>Cart</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="tropic-hero">
+    <div class="hero-content">
+      <div class="hero-emoji-row">🍎 🍊 🍍 🥭 🍋 🍇</div>
+      <h1 class="hero-heading">Farm Fresh <span class="highlight">Fruits</span></h1>
+      <p class="hero-desc">Handpicked goodness delivered fresh to your door!</p>
+      <div class="hero-pills">
+        <span class="hero-pill">✅ Organic</span>
+        <span class="hero-pill">🚚 Free Delivery</span>
+        <span class="hero-pill">⭐ Top Rated</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tropic-section-header">
+    <h2 class="section-title">🌿 Our Fresh Picks</h2>
+    <span class="section-sub">3 products available</span>
+  </div>
+
+  <div class="tropic-grid">
+    <div class="tropic-card apple-card">
+      <div class="card-ribbon">10% OFF</div>
+      <div class="tropic-img-wrap">
+        <img routerLink="/details" src="./assets/apple.jpg" alt="Apple" class="tropic-img" />
+        <div class="img-hover-overlay"><span>View Details →</span></div>
+      </div>
+      <div class="tropic-card-body">
+        <div class="fruit-emoji-big">🍎</div>
+        <h3 class="tropic-name">Apple</h3>
+        <div class="tropic-desc">Crisp, juicy, and packed with nutrients</div>
+        <div class="tropic-price-row">
+          <span class="tropic-price">₹30</span>
+          <span class="tropic-original">₹33</span>
+        </div>
+        <div class="delivery-badge">🚚 Free Delivery</div>
+        <button (click)="addToCart('apple', 'Apple', 30)" class="tropic-btn">Add to Cart 🛒</button>
+      </div>
+    </div>
+    <div class="tropic-card orange-card">
+      <div class="card-ribbon orange-ribbon">30% OFF</div>
+      <div class="tropic-img-wrap">
+        <img src="./assets/orrange.jpg" alt="Orange" class="tropic-img" />
+        <div class="img-hover-overlay"><span>View Details →</span></div>
+      </div>
+      <div class="tropic-card-body">
+        <div class="fruit-emoji-big">🍊</div>
+        <h3 class="tropic-name">Orange</h3>
+        <div class="tropic-desc">Vitamin C powerhouse, sunshine in every bite</div>
+        <div class="tropic-price-row">
+          <span class="tropic-price">₹60</span>
+          <span class="tropic-original">₹86</span>
+        </div>
+        <div class="delivery-badge">🚚 Free Delivery</div>
+        <button (click)="addToCart('orange', 'Orange', 60)" class="tropic-btn orange-btn">Add to Cart 🛒</button>
+      </div>
+    </div>
+    <div class="tropic-card pine-card">
+      <div class="card-ribbon pine-ribbon">35% OFF</div>
+      <div class="tropic-img-wrap">
+        <img src="./assets/pineapple.jpg" alt="Pineapple" class="tropic-img" />
+        <div class="img-hover-overlay"><span>View Details →</span></div>
+      </div>
+      <div class="tropic-card-body">
+        <div class="fruit-emoji-big">🍍</div>
+        <h3 class="tropic-name">Pineapple</h3>
+        <div class="tropic-desc">Tropical treasure, sweet and tangy perfection</div>
+        <div class="tropic-price-row">
+          <span class="tropic-price">₹70</span>
+          <span class="tropic-original">₹108</span>
+        </div>
+        <div class="delivery-badge">🚚 Free Delivery</div>
+        <button (click)="addToCart('pineapple', 'Pineapple', 70)" class="tropic-btn pine-btn">Add to Cart 🛒</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tropic-footer">
+    <div class="footer-emojis">🍎 🍊 🍍 🥝 🍋 🍇 🍑 🥭</div>
+    <p>© 2026 FruitShop — Fresh everyday 🌿</p>
+  </div>
+</ng-container>
+
+<!-- ===== VERSION 3: PREMIUM ORGANIC ===== -->
+<ng-container *ngIf="theme === 'v3'">
+  <div class="premium-navbar">
+    <div class="premium-brand">
+      <div class="brand-monogram">FS</div>
+      <div class="brand-text">
+        <span class="brand-name">FruitShop</span>
+        <span class="brand-sub">Organic Boutique</span>
+      </div>
+    </div>
+    <div class="premium-search-wrap">
+      <input type="text" class="premium-search" placeholder="Search our collection..." />
+    </div>
+    <div class="premium-navbar-right">
+      <select class="theme-switcher theme-switcher-premium" [ngModel]="theme" (ngModelChange)="onThemeChange($event)">
+        <option value="v1">⚡ Neon Dark</option>
+        <option value="v2">🍓 Tropical</option>
+        <option value="v3">🌿 Premium</option>
+      </select>
+      <a routerLink="/cart" class="premium-cart-btn">
+        <span class="cart-icon-prem">🛍</span>
+        <span class="cart-label">Cart</span>
+        <span class="premium-badge">{{ totalCount$ | async }}</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="premium-hero">
+    <div class="hero-eyebrow">— Handpicked Excellence —</div>
+    <h1 class="premium-hero-title">The Finest<br /><em>Organic Fruits</em></h1>
+    <p class="premium-hero-desc">Sustainably sourced. Artfully curated. Delivered fresh.</p>
+    <div class="hero-divider">
+      <span class="divider-line"></span>
+      <span class="divider-leaf">🌿</span>
+      <span class="divider-line"></span>
+    </div>
+  </div>
+
+  <div class="premium-collection-header">
+    <h2 class="collection-title">Our Collection</h2>
+    <p class="collection-sub">Seasonal, premium, and naturally grown</p>
+  </div>
+
+  <div class="premium-grid">
+    <div class="premium-card">
+      <div class="premium-ribbon">FEATURED</div>
+      <div class="premium-img-container">
+        <img routerLink="/details" src="./assets/apple.jpg" alt="Apple" class="premium-img" />
+        <div class="img-overlay-premium"><span class="overlay-text">View Details</span></div>
+      </div>
+      <div class="premium-card-body">
+        <div class="discount-tag-premium">10% off</div>
+        <h3 class="premium-product-name">Apple</h3>
+        <p class="premium-product-desc">Hand-selected, premium quality — rich in antioxidants</p>
+        <div class="premium-price-block">
+          <span class="premium-price">₹30</span>
+          <span class="premium-original">₹33</span>
+        </div>
+        <div class="premium-delivery">Free Express Delivery</div>
+        <div class="premium-actions">
+          <button (click)="addToCart('apple', 'Apple', 30)" class="btn-premium-solid">Add to Cart</button>
+          <a routerLink="/details" class="btn-premium-outline">Details</a>
+        </div>
+      </div>
+    </div>
+    <div class="premium-card">
+      <div class="premium-img-container">
+        <img src="./assets/orrange.jpg" alt="Orange" class="premium-img" />
+        <div class="img-overlay-premium"><span class="overlay-text">View Details</span></div>
+      </div>
+      <div class="premium-card-body">
+        <div class="discount-tag-premium">30% off</div>
+        <h3 class="premium-product-name">Orange</h3>
+        <p class="premium-product-desc">Sun-ripened Nagpur oranges — bursting with vitamin C</p>
+        <div class="premium-price-block">
+          <span class="premium-price">₹60</span>
+          <span class="premium-original">₹86</span>
+        </div>
+        <div class="premium-delivery">Free Express Delivery</div>
+        <div class="premium-actions">
+          <button (click)="addToCart('orange', 'Orange', 60)" class="btn-premium-solid">Add to Cart</button>
+          <a routerLink="/details" class="btn-premium-outline">Details</a>
+        </div>
+      </div>
+    </div>
+    <div class="premium-card">
+      <div class="premium-img-container">
+        <img src="./assets/pineapple.jpg" alt="Pineapple" class="premium-img" />
+        <div class="img-overlay-premium"><span class="overlay-text">View Details</span></div>
+      </div>
+      <div class="premium-card-body">
+        <div class="discount-tag-premium">35% off</div>
+        <h3 class="premium-product-name">Pineapple</h3>
+        <p class="premium-product-desc">Tropical heritage variety — sweet, tangy, and enzymatic</p>
+        <div class="premium-price-block">
+          <span class="premium-price">₹70</span>
+          <span class="premium-original">₹108</span>
+        </div>
+        <div class="premium-delivery">Free Express Delivery</div>
+        <div class="premium-actions">
+          <button (click)="addToCart('pineapple', 'Pineapple', 70)" class="btn-premium-solid">Add to Cart</button>
+          <a routerLink="/details" class="btn-premium-outline">Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="premium-banner">
+    <div class="banner-content">
+      <span class="banner-icon">🌿</span>
+      <div>
+        <div class="banner-title">100% Organic & Certified</div>
+        <div class="banner-sub">Every fruit is traceable from farm to your door</div>
+      </div>
+      <span class="banner-icon">🌿</span>
+    </div>
+  </div>
+
+  <footer class="premium-footer">
+    <div class="footer-brand">FruitShop</div>
+    <div class="footer-tagline">Organic Boutique · Est. 2026</div>
+  </footer>
+</ng-container>
