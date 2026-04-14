@@ -1,0 +1,70 @@
+<!-- VERSION 3: PREMIUM ORGANIC — cart.component.html -->
+<div class="premium-navbar">
+  <div class="premium-brand">
+    <div class="brand-monogram">FS</div>
+    <div class="brand-text">
+      <span class="brand-name">FruitShop</span>
+      <span class="brand-sub">Organic Boutique</span>
+    </div>
+  </div>
+  <a routerLink="/product" class="nav-back">Return to Shop</a>
+</div>
+
+<div class="premium-cart-page">
+
+  <div class="cart-page-header">
+    <h1 class="cart-title-premium">Your Cart</h1>
+    <div class="cart-title-line"></div>
+  </div>
+
+  <div class="cart-body-premium">
+
+    <!-- Empty state -->
+    <div class="empty-state-premium">
+      <div class="empty-botanical">
+        <div class="leaf-art">🌿</div>
+        <div class="empty-circle">
+          <span class="empty-icon-premium">🛍</span>
+        </div>
+        <div class="leaf-art right">🌿</div>
+      </div>
+      <h2 class="empty-title-premium">Your cart is empty</h2>
+      <p class="empty-desc-premium">
+        Discover our curated selection of premium organic fruits.
+      </p>
+      <a routerLink="/product" class="btn-continue-premium">Continue Shopping</a>
+    </div>
+
+    <!-- Summary -->
+    <div class="premium-summary-panel">
+      <div class="summary-header-premium">
+        <h3 class="summary-title-premium">Order Summary</h3>
+        <div class="summary-title-line"></div>
+      </div>
+      <div class="summary-items">
+        <div class="summary-row-premium"><span>Subtotal</span><span>₹0</span></div>
+        <div class="summary-row-premium"><span>Express Delivery</span><span class="comp-label">Complimentary</span></div>
+        <div class="summary-row-premium"><span>Organic Certification</span><span class="comp-label">Included</span></div>
+      </div>
+      <div class="summary-line-premium"></div>
+      <div class="summary-row-premium total-row-premium">
+        <span>Total</span>
+        <span class="total-premium">₹0</span>
+      </div>
+      <button class="btn-checkout-premium">Proceed to Checkout</button>
+      <div class="trust-line">
+        <span>🔒 Secure Checkout</span>
+        <span>·</span>
+        <span>🌿 100% Organic</span>
+        <span>·</span>
+        <span>✅ Verified Farm</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="premium-footer">
+  <div class="footer-brand">FruitShop</div>
+  <div class="footer-tagline">Organic Boutique · Est. 2026</div>
+</footer>

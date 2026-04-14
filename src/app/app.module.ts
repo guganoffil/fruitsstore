@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +21,7 @@ import { CartComponent } from './cart/cart.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,MatToolbarModule,MatIconModule,MatButtonModule,
     BrowserAnimationsModule,MatSidenavModule
   ],

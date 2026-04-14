@@ -1,0 +1,325 @@
+/* ===== VERSION 3: PREMIUM ORGANIC THEME ===== */
+/* To activate: copy to src/app/product/product.component.css
+   and update styles.css with Playfair Display + Lato fonts */
+
+:root {
+  --forest: #1a2e1a;
+  --forest-mid: #2d4a2d;
+  --gold: #c9a84c;
+  --gold-light: #e8c96b;
+  --linen: #f8f5f0;
+  --linen-dark: #ede8df;
+  --cream: #faf7f2;
+  --text-dark: #1a2010;
+  --text-mid: #5a6650;
+  --shadow: 0 4px 20px rgba(26,46,26,0.1);
+}
+
+/* STYLES.CSS additions:
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap');
+body { font-family: 'Lato', sans-serif; background: #f8f5f0; color: #1a2010; }
+*/
+
+/* Navbar */
+.premium-navbar {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--forest);
+  padding: 16px 48px;
+  position: sticky; top: 0; z-index: 100;
+  border-bottom: 2px solid var(--gold);
+  box-shadow: 0 2px 20px rgba(26,46,26,0.3);
+}
+
+.premium-brand { display: flex; align-items: center; gap: 14px; }
+.brand-monogram {
+  width: 44px; height: 44px;
+  background: var(--gold);
+  color: var(--forest);
+  font-family: 'Playfair Display', serif;
+  font-size: 16px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 4px;
+}
+.brand-text { display: flex; flex-direction: column; }
+.brand-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; font-weight: 700; color: white;
+  letter-spacing: 1px; line-height: 1.1;
+}
+.brand-sub {
+  font-family: 'Lato', sans-serif;
+  font-size: 10px; color: var(--gold);
+  letter-spacing: 3px; text-transform: uppercase;
+}
+
+.premium-search-wrap { display: flex; }
+.premium-search {
+  background: transparent;
+  border: none; border-bottom: 1px solid rgba(201,168,76,0.4);
+  color: white; font-family: 'Lato', sans-serif;
+  font-size: 14px; padding: 8px 4px;
+  width: 260px; outline: none;
+  transition: border-color 0.3s;
+}
+.premium-search::placeholder { color: rgba(255,255,255,0.4); }
+.premium-search:focus { border-bottom-color: var(--gold); }
+
+.premium-cart-btn {
+  display: flex; align-items: center; gap: 8px;
+  text-decoration: none; color: white;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px; font-weight: 700;
+  letter-spacing: 1px;
+  padding: 8px 0;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s;
+  position: relative;
+}
+.premium-cart-btn:hover { border-bottom-color: var(--gold); text-decoration: none; color: white; }
+.cart-icon-prem { font-size: 20px; }
+.premium-badge {
+  background: var(--gold);
+  color: var(--forest);
+  font-size: 11px; font-weight: 700;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* Hero */
+.premium-hero {
+  background: var(--forest);
+  color: white;
+  text-align: center;
+  padding: 80px 20px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.premium-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(ellipse at 30% 50%, rgba(201,168,76,0.08) 0%, transparent 60%),
+                    radial-gradient(ellipse at 70% 50%, rgba(45,74,45,0.4) 0%, transparent 60%);
+}
+.hero-eyebrow {
+  font-family: 'Lato', sans-serif;
+  font-size: 11px; letter-spacing: 5px; color: var(--gold);
+  text-transform: uppercase; margin-bottom: 20px;
+  position: relative;
+}
+.premium-hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 60px; font-weight: 700; line-height: 1.15;
+  color: white; margin-bottom: 20px; position: relative;
+}
+.premium-hero-title em { color: var(--gold); font-style: italic; }
+.premium-hero-desc {
+  font-family: 'Lato', sans-serif;
+  font-size: 16px; font-weight: 300;
+  color: rgba(255,255,255,0.7); margin-bottom: 32px;
+  letter-spacing: 1px; position: relative;
+}
+.hero-divider {
+  display: flex; align-items: center; justify-content: center;
+  gap: 16px; position: relative;
+}
+.divider-line {
+  display: block; width: 80px; height: 1px; background: rgba(201,168,76,0.5);
+}
+.divider-leaf { font-size: 18px; }
+
+/* Collection header */
+.premium-collection-header {
+  text-align: center;
+  padding: 56px 20px 28px;
+}
+.collection-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px; font-weight: 600; color: var(--forest);
+  margin-bottom: 8px;
+  position: relative; display: inline-block;
+}
+.collection-title::after {
+  content: '';
+  display: block;
+  width: 60%;
+  height: 2px;
+  background: var(--gold);
+  margin: 10px auto 0;
+}
+.collection-sub {
+  font-family: 'Lato', sans-serif;
+  font-size: 13px; letter-spacing: 3px;
+  color: var(--text-mid); text-transform: uppercase;
+}
+
+/* Product grid */
+.premium-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 1160px; margin: 0 auto;
+  padding: 0 40px 70px;
+}
+@media (max-width: 900px) { .premium-grid { grid-template-columns: repeat(2,1fr); gap: 28px; } }
+@media (max-width: 600px) { .premium-grid { grid-template-columns: 1fr; } }
+
+/* Card */
+.premium-card {
+  background: white;
+  border-top: 3px solid var(--forest);
+  border-radius: 2px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.premium-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 36px rgba(26,46,26,0.18);
+  border-top-color: var(--gold);
+}
+
+.premium-ribbon {
+  position: absolute; top: 0; left: 0;
+  background: var(--gold);
+  color: var(--forest);
+  font-family: 'Lato', sans-serif;
+  font-size: 9px; font-weight: 700; letter-spacing: 2px;
+  padding: 5px 14px;
+  z-index: 2;
+  text-transform: uppercase;
+}
+
+.premium-img-container {
+  position: relative; overflow: hidden;
+  height: 220px;
+  background: var(--linen);
+  display: flex; align-items: center; justify-content: center;
+}
+.premium-img {
+  width: 170px; height: 170px;
+  object-fit: cover; border-radius: 2px;
+  transition: transform 0.4s ease;
+  filter: saturate(1.1);
+}
+.premium-card:hover .premium-img { transform: scale(1.06); }
+.img-overlay-premium {
+  position: absolute; inset: 0;
+  background: rgba(26,46,26,0.82);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.3s;
+}
+.premium-card:hover .img-overlay-premium { opacity: 1; }
+.overlay-text {
+  font-family: 'Lato', sans-serif;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* Card body */
+.premium-card-body { padding: 22px 24px 24px; }
+.discount-tag-premium {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--forest);
+  font-family: 'Lato', sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 3px 10px; border-radius: 2px; margin-bottom: 10px;
+}
+.premium-product-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 600; color: var(--forest);
+  margin-bottom: 8px;
+}
+.premium-product-desc {
+  font-family: 'Lato', sans-serif;
+  font-size: 13px; color: var(--text-mid);
+  line-height: 1.6; margin-bottom: 14px;
+}
+.premium-price-block {
+  display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px;
+}
+.premium-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px; font-weight: 700; color: var(--gold);
+}
+.premium-original {
+  font-size: 14px; color: #bbb; text-decoration: line-through;
+}
+.premium-delivery {
+  font-family: 'Lato', sans-serif;
+  font-size: 11px; color: var(--forest-mid);
+  letter-spacing: 2px; text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.premium-actions { display: flex; gap: 10px; }
+.btn-premium-solid {
+  flex: 1; text-align: center; padding: 11px 0;
+  background: var(--forest);
+  color: white; text-decoration: none;
+  font-family: 'Lato', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+  border: 2px solid var(--forest);
+}
+.btn-premium-solid:hover {
+  background: var(--gold); border-color: var(--gold);
+  color: var(--forest); text-decoration: none;
+}
+.btn-premium-outline {
+  flex: 1; text-align: center; padding: 11px 0;
+  background: transparent;
+  color: var(--forest); text-decoration: none;
+  font-family: 'Lato', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase;
+  border: 2px solid var(--forest);
+  transition: all 0.25s ease;
+}
+.btn-premium-outline:hover {
+  background: var(--forest); color: white; text-decoration: none;
+}
+
+/* Banner */
+.premium-banner {
+  background: var(--forest);
+  padding: 36px 40px;
+  margin-top: 10px;
+}
+.banner-content {
+  display: flex; align-items: center; justify-content: center; gap: 32px;
+  max-width: 700px; margin: 0 auto;
+}
+.banner-icon { font-size: 28px; opacity: 0.7; }
+.banner-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px; font-weight: 600; color: var(--gold);
+  text-align: center; margin-bottom: 4px;
+}
+.banner-sub {
+  font-family: 'Lato', sans-serif;
+  font-size: 13px; color: rgba(255,255,255,0.6);
+  text-align: center; letter-spacing: 1px;
+}
+
+/* Footer */
+.premium-footer {
+  background: #0f1f0f;
+  text-align: center;
+  padding: 32px;
+}
+.footer-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px; font-weight: 700; color: var(--gold);
+  letter-spacing: 2px; margin-bottom: 6px;
+}
+.footer-tagline {
+  font-family: 'Lato', sans-serif;
+  font-size: 11px; letter-spacing: 4px;
+  color: rgba(255,255,255,0.35); text-transform: uppercase;
+}
