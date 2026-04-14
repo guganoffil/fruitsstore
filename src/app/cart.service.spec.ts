@@ -109,4 +109,31 @@ describe('CartService', () => {
     freshService.items$.subscribe(v => items = v);
     expect(items.length).toBe(0);
   });
+
+  it('updateQuantity -1 should decrement quantity without removing if qty > 1', (done) => {
+    service.addToCart('apple', 'Apple', 30);
+    service.addToCart('apple', 'Apple', 30); // qty is now 2
+    service.updateQuantity('apple', -1);     // qty should be 1
+    service.items$.subscribe(items => {
+      expect(items.length).toBe(1);
+      expect(items[0].quantity).toBe(1);
+      done();
+    });
+  });
+
+  it('should persist to localStorage after updateQuantity', () => {
+    service.addToCart('apple', 'Apple', 30);
+    service.updateQuantity('apple', 1);
+    const stored = JSON.parse(localStorage.getItem('fruitshop_cart')!);
+    expect(stored[0].quantity).toBe(2);
+  });
+
+  it('should persist to localStorage after removeFromCart', () => {
+    service.addToCart('apple', 'Apple', 30);
+    service.addToCart('orange', 'Orange', 60);
+    service.removeFromCart('apple');
+    const stored = JSON.parse(localStorage.getItem('fruitshop_cart')!);
+    expect(stored.length).toBe(1);
+    expect(stored[0].id).toBe('orange');
+  });
 });
